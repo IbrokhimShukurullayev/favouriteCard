@@ -97,9 +97,24 @@
       align-items: center;
       gap: 30px;
       a {
+        position: relative;
         svg {
           color: #000;
           font-size: 20px;
+        }
+        span {
+          position: absolute;
+          color: rgb(255, 255, 255);
+          border-radius: 20px;
+          width: 20px;
+          top: -8px;
+          left: 13px;
+          background: rgb(219, 68, 68);
+          font-size: 12px;
+          font-weight: 500;
+          line-height: 20px;
+          letter-spacing: 0%;
+          text-align: center;
         }
       }
       svg {

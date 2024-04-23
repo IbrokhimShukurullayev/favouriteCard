@@ -7,7 +7,10 @@ import { IoCartOutline } from "react-icons/io5";
 
 import { Link } from 'react-router-dom';
 
+import { useSelector } from 'react-redux';
+
 const Header = () => {
+    const wishes = useSelector(state => state.wishlist.value)
   return (
     <header id="header">
         <div className=" nav">
@@ -40,6 +43,7 @@ const Header = () => {
                         <div className="nav__end-card">
                             <Link to={`/favourite`}>
                                 <FaRegHeart/>
+                                <span>{wishes.length}</span>
                             </Link>
                             <IoCartOutline/>
                         </div>

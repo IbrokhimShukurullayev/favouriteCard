@@ -6,17 +6,25 @@ import { Link } from 'react-router-dom'
 import Skeleton from '../skeleton/Skeleton'
 import Loading from '../loading/Loading'
 
+import { useDispatch , useSelector } from 'react-redux'
+import { toogleWishes } from '../../context/wishestSlice'
+
 import star from "../../assets/images/str.png"
+
+import { FaRegHeart , FaHeart } from "react-icons/fa";
 
 
 const API_URL = "https://fakestoreapi.com/products/"
 
 function Card() {
+    const dispatch = useDispatch()
     const [data , setData] = useState([])
     const [count , setCount] = useState(8)
     const [categories , SetCategories] = useState([])
     const [categoryValue , setCategoryValue] = useState("")
     const [loading, setLoading] = useState(false)
+
+    const wishes = useSelector(state => state.wishlist.value)
 
 useEffect(()=> {
         axios
@@ -45,9 +53,12 @@ useEffect(()=> {
             <div className="card__img">
                 <Link to={`/single/${el.id}`}><img title={el.description} src={el.image} alt="" /></Link>
             </div>
-            <button className='card__like'><svg class="imagess" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
-            <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
-          </svg></button>
+            <button onClick={() => dispatch(toogleWishes(el))} className='card__like'>
+                {
+                    wishes.some(w => w.id === el.id) ? <FaHeart/> :
+                <FaRegHeart/> 
+                }
+            </button>
             <div className="card__body">
                 <h2 title={el.title} className="card__title">
                     {el.title}
@@ -75,7 +86,7 @@ useEffect(()=> {
               {categoriesItem}
             </ul>
           </div>
-          { loading && <Skeleton count={10}/> }
+          { loading && <Skeleton count={8}/> }
           { loading && <Loading count={4}/> }
           <div className="row">
             {products}
