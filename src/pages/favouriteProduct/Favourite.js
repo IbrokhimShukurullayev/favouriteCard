@@ -13,6 +13,7 @@ import { FaRegHeart , FaHeart } from "react-icons/fa";
 import { useDispatch } from 'react-redux'
 import { toogleWishes } from '../../context/wishestSlice'
 
+import Empty from "../../components/empty/Empty"
 
 const API_URL = "https://fakestoreapi.com/products/"
 
@@ -59,7 +60,7 @@ useEffect(()=> {
     <h2>Wishes</h2>
      <div className='row container'>
     {
-        wishes.length ? products : <h1>Empty</h1>
+        wishes.length ? products : <Empty/>
     }
     </div>
     </>
