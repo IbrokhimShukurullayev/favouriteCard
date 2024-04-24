@@ -7,6 +7,7 @@ import Single from './pages/single/Single';
 
 import {Routes , Route} from "react-router-dom"
 import Favourite from './pages/favouriteProduct/Favourite';
+import Karzinka from './pages/karzinka/Karzinka';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/single/:id" element={<Single />} />
         <Route path="/favourite" element={<Favourite />} />
+        <Route path="/karzinka" element={<Karzinka />} />
       </Routes>
       <Footer/>
     </div>

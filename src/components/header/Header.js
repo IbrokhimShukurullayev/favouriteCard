@@ -45,7 +45,10 @@ const Header = () => {
                                 <FaRegHeart/>
                                 <span>{wishes.length}</span>
                             </Link>
-                            <IoCartOutline/>
+                            <Link to={`/karzinka`}>
+                                <IoCartOutline/>
+                                <span>1</span>
+                            </Link>
                         </div>
                     </div>
                 </div>
