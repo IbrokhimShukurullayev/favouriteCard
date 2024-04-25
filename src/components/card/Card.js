@@ -8,6 +8,7 @@ import Loading from '../loading/Loading'
 
 import { useDispatch , useSelector } from 'react-redux'
 import { toogleWishes } from '../../context/wishestSlice'
+import { addCard } from '../../context/karzinkaSlice'
 
 import star from "../../assets/images/str.png"
 
@@ -25,6 +26,7 @@ function Card() {
     const [loading, setLoading] = useState(false)
 
     const wishes = useSelector(state => state.wishlist.value)
+    const karzinka = useSelector(state => state.karzinka.value)
 
 useEffect(()=> {
         axios
@@ -69,6 +71,9 @@ useEffect(()=> {
                     <img src={star} alt="" />
                     <h4>({el.rating.rate})</h4>
                 </div>
+                <button onClick={() => dispatch(addCard(el))} className="card__button">
+                  Add
+                </button>
             </div>
         </div>
     ))

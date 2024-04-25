@@ -11,6 +11,8 @@ import { useSelector } from 'react-redux';
 
 const Header = () => {
     const wishes = useSelector(state => state.wishlist.value)
+    const karzinka = useSelector(state => state.karzinka.value)
+
   return (
     <header id="header">
         <div className=" nav">
@@ -47,7 +49,7 @@ const Header = () => {
                             </Link>
                             <Link to={`/karzinka`}>
                                 <IoCartOutline/>
-                                <span>1</span>
+                                <span>{karzinka.length  }</span>
                             </Link>
                         </div>
                     </div>
